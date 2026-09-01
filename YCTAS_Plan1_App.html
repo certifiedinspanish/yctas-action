@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YCTAS! Plan 1 — Set 1 Complete Experience</title>
+<title>YCTAS! Action — Complete Experience</title>
 <style>
   :root {
     --cream: #FFF8ED;
@@ -686,7 +686,7 @@ function renderHome() {
       <div class="hub-card wide ${set1Mastered() ? "" : "locked"}" id="hub-set2">
         <img class="hub-icon-img" src="${set1Mastered() ? HUB_ICONS.set2_unlocked : HUB_ICONS.set2_locked}" alt="">
         <div class="label">Set 2 — Next 12 Verbs</div>
-        <div class="sub">${set1Mastered() ? "12 new verbs ready to learn!" : "Unlocks when Set 1 is fully mastered"}</div>
+        <div class="sub">${!set1Mastered() ? "Unlocks when Set 1 is fully mastered" : (allMastered() ? "Complete: All 24 verbs certified" : "12 new verbs ready to learn!")}</div>
       </div>
     </div>
 
