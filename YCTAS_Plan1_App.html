@@ -1304,5 +1304,36 @@ function renderCertificate() {
 
 render();
 </script>
+<script>
+(async function() {
+  const res = await fetch('status.json?_=' + Date.now());
+  const status = await res.json();
+
+  const expired = status.expires && new Date() > new Date(status.expires);
+
+  if (!status.active || expired) {
+    document.body.innerHTML = `<div style="text-align:center;padding:60px;font-family:sans-serif;">
+      <p>${status.offlineMessage}</p></div>`;
+    return;
+  }
+
+  const unlocked = sessionStorage.getItem('appUnlocked');
+  if (unlocked !== 'true') {
+    const code = prompt('Enter passcode:');
+    if (code !== status.passcode) {
+      document.body.innerHTML = '<p style="text-align:center;padding:60px;">Incorrect passcode.</p>';
+      return;
+    }
+    sessionStorage.setItem('appUnlocked', 'true');
+  }
+
+  const stamp = document.createElement('a');
+  stamp.href = 'mailto:info@suveconjugator.com';
+  stamp.style.cssText = 'position:fixed;top:40px;right:-60px;transform:rotate(35deg);background:rgba(200,30,30,0.75);color:#fff;padding:8px 70px;text-align:center;font-family:sans-serif;font-weight:bold;font-size:13px;line-height:1.4;z-index:99999;text-decoration:none;box-shadow:0 2px 6px rgba(0,0,0,0.3);';
+  stamp.innerHTML = 'PREVIEW — NOT FOR SALE<br><span style="font-weight:normal;font-size:10px;">Feedback: info@suveconjugator.com</span>';
+  document.body.appendChild(stamp);
+})();
+</script>
+<script data-goatcounter="https://plan1-yctas-tracker.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
