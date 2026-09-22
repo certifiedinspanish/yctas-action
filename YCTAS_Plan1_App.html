@@ -1353,6 +1353,27 @@ render();
     }).catch(() => {});
   }
 
+  // --- Time tracking ---
+  const sessionStart = Date.now();
+  let sessionEnded = false;
+
+  function endSession() {
+    if (sessionEnded) return;
+    sessionEnded = true;
+    const minutes = Math.round((Date.now() - sessionStart) / 60000 * 10) / 10;
+    fetch(TRACK_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      keepalive: true,
+      body: JSON.stringify({ code: studentCode, app: APP_NAME, eventType: 'session-end', value: minutes })
+    }).catch(() => {});
+  }
+
+  document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden') endSession();
+  });
+  window.addEventListener('pagehide', endSession);
+
   const email = 'info@suveconjugator.com';
   const stamp = document.createElement('a');
   stamp.href = 'mailto:' + email;
