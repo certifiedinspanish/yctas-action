@@ -3,34 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="refresh" content="0; url=YCTAS_Plan1_App.html">
-<title>YCTAS! Plan 1</title>
+<title>YCTAS! Commands</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=1">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png?v=1">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=1">
+<link rel="manifest" href="manifest.webmanifest?v=1">
+<meta name="theme-color" content="#C2185B">
 </head>
 <body>
 <p>Loading YCTAS!... if nothing happens, <a href="YCTAS_Plan1_App.html">click here</a>.</p>
-<script>
-(async function() {
-  const res = await fetch('status.json?_=' + Date.now());
-  const status = await res.json();
-
-  const expired = status.expires && new Date() > new Date(status.expires);
-
-  if (!status.active || expired) {
-    document.body.innerHTML = `<div style="text-align:center;padding:60px;font-family:sans-serif;">
-      <p>${status.offlineMessage}</p></div>`;
-    return;
-  }
-
-  const unlocked = sessionStorage.getItem('appUnlocked');
-  if (unlocked !== 'true') {
-    const code = prompt('Enter passcode:');
-    if (code !== status.passcode) {
-      document.body.innerHTML = '<p style="text-align:center;padding:60px;">Incorrect passcode.</p>';
-      return;
-    }
-    sessionStorage.setItem('appUnlocked', 'true');
-  }
-})();
-</script>
-  <script data-goatcounter="https://plan1-yctas-tracker.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://plan1-yctas-tracker.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

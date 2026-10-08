@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>YCTAS! Action — Complete Experience</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=1">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png?v=1">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=1">
+<link rel="manifest" href="manifest.webmanifest?v=1">
+<meta name="theme-color" content="#C2185B">
 <style>
   :root {
     --cream: #FFF8ED;
@@ -383,6 +389,7 @@ function yctasLogo(width) {
   const w = width || 220;
   const h = Math.round(w * (140 / 440));
   return `
+    <img src="icon-192.png?v=1" alt="" width="${Math.round(w*0.26)}" height="${Math.round(w*0.26)}" style="display:block;margin:0 auto 8px;border-radius:22%;box-shadow:0 3px 8px rgba(61,44,78,0.3);">
     <svg class="yctas-logo" width="${w}" height="${h}" viewBox="0 0 440 140" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <filter id="yctas-dropshadow" x="-20%" y="-20%" width="140%" height="140%">
